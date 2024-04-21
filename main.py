@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
@@ -29,6 +29,6 @@ for div in soup.find_all("div", class_="artist__track-count"):
 with OUTPUT_FILE.open("w") as f:
     result = {
         "count": total,
-        "last_update": datetime.now().strftime(DATE_FORMAT),
+        "last_update": datetime.now(timezone.utc).strftime(DATE_FORMAT),
     }
     json.dump(result, f)

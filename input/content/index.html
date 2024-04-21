@@ -1,1 +1,77 @@
-osu! currently counts: {{ data.result.count }} Featured Artist licensed songs.
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>osu! has {{ data.result.count }} FA songs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @font-face {
+            font-family: Torus;
+            font-weight: 400;
+
+            src: url(assets/torus.otf)
+        }
+
+        @font-face {
+            font-family: Torus;
+            font-weight: 700;
+
+            src: url(assets/torus-semibold.otf)
+        }
+
+        :root {
+            --gray-hue: 200;
+            --bg: hsl(var(--gray-hue), 10%, 10%);
+            --pink-hue: 333;
+            --pink: hsl(var(--pink-hue), 100%, 70%);
+            --fg: #fff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Torus', sans-serif;
+            text-align: center;
+            margin-top: 4em;
+        }
+
+        #result {
+            color: var(--pink);
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        a {
+            text-decoration: none;
+            color: #6cf;
+            transition: color 80ms linear;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>osu! Featured Artists songs counter</h1>
+    <div id="result">
+        {{ data.result.count }}
+    </div>
+    <p>
+        Last update: {{ data.result.last_update }}
+    </p>
+    <p>
+        Resource used: <a
+            href="https://osu.ppy.sh/beatmaps/artists">https://osu.ppy.sh/beatmaps/artists</a>
+    </p>
+    <p>
+        Source code: <a
+            href="https://github.com/asso-msn/fa-songs-counter">https://github.com/asso-msn/fa-songs-counter</a>
+    </p>
+</body>
+
+</html>
+
+</html>

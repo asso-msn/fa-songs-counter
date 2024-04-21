@@ -1,9 +1,14 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>osu! has {{ data.result.count }} FA songs</title>
+    {% set title="osu! has " + data.result.count | string + " FA songs" %}
+    <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ title }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta name="twitter:title" content="{{ title }}">
     <style>
         @font-face {
             font-family: Torus;
@@ -71,7 +76,5 @@
             href="https://github.com/asso-msn/fa-songs-counter">https://github.com/asso-msn/fa-songs-counter</a>
     </p>
 </body>
-
-</html>
 
 </html>

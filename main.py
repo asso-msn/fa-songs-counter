@@ -19,16 +19,18 @@ soup = BeautifulSoup(response.content, "html.parser")
 # with open("debug.html", "w") as f:
 #     f.write(response.content.decode())
 
-total = 0
+songs_count = 0
+entries = soup.find_all("div", class_="artist__track-count")
 
-for div in soup.find_all("div", class_="artist__track-count"):
+for div in entries:
     count = div.text.strip().split()[0]
     count = int(count)
-    total += count
+    songs_count += count
 
 with OUTPUT_FILE.open("w") as f:
     result = {
-        "count": total,
+        "songs_count": songs_count,
+        "artists_count": len(entries),
         "last_update": datetime.now(timezone.utc).strftime(DATE_FORMAT),
     }
     json.dump(result, f)

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    {% set title="osu! has " + data.result.count | string + " FA songs" %}
+    {% set title="osu! has " + data.result.songs_count | string + " FA songs" %}
     <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ title }}">
@@ -41,9 +41,12 @@
         }
 
         #result {
+            font-size: 2em;
+        }
+
+        #result strong {
             color: var(--pink);
             font-weight: bold;
-            font-size: 2em;
         }
 
         a {
@@ -62,7 +65,8 @@
 <body>
     <h1>osu! Featured Artists songs counter</h1>
     <div id="result">
-        {{ data.result.count }}
+        <strong>{{ data.result.songs_count }}</strong> FA songs
+        <br><small>across <strong>{{ data.result.artists_count }}</strong> artists</small>
     </div>
     <p>
         Last update: {{ data.result.last_update }}
